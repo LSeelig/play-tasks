@@ -1,0 +1,43 @@
+@* messages1 Template File *@
+@(username: String, messages: Seq[String], general: Seq[String])(implicit request: RequestHeader, flash: Flash)
+
+@main(s"$username's Messages") {
+    <h2>Message Board</h2>
+    <div>Logged in as @username</div>
+    <br>
+    <h3>Private</h3>
+    <ul>
+        @for((message, i) <- messages.zipWithIndex) {
+            <li>@message</li>
+        }
+    </ul>
+    
+    <h3>Public</h3>
+    <ul>
+        @for((message, i) <- general.zipWithIndex) {
+            <li>@message</li>
+        }
+    </ul>
+
+    <br>
+
+    <h3>Send Messages</h3>
+    <form method="post" action="@routes.Messages1.sendPersonal">
+        @helper.CSRF.formField
+        <input type="text" name="recipient" placeholder="Recipient"></input>
+        <input type="text" name="newMessage" placeholder="Message"></input>
+        <input type="Submit" value="Send"></input>
+    </form>
+    <br>
+    <form method="post" action="@routes.Messages1.sendGeneral">
+        @helper.CSRF.formField
+        <input type="text" name="newMessage" placeholder="Message"></input>
+        <input type="Submit" value="Send to All"></input>
+    </form>
+
+    <br>
+
+    <div>
+        <a href="@routes.Messages1.logout">Logout</a>
+    </div>
+} 

@@ -1,0 +1,25 @@
+@* login1 Template File *@
+@()(implicit request: RequestHeader, flash: Flash)
+
+@main("Login") {
+    <h2>Login</h2>
+
+    <form method="post" action="@routes.Messages1.validateLogin">
+        @helper.CSRF.formField
+        Username: <input type="text" name="username"></input>
+        <br>
+        Password: <input type="password" name="password"></input>
+        <br>
+        <input type="submit"></input>
+    </form>
+
+    <form method="post" action="@routes.Messages1.createUser">
+        @helper.CSRF.formField
+        <h3>Create User</h3>
+        Username: <input type="text" name="username"></input>
+        <br>
+        Password: <input type="password" name="password"></input>
+        <br>
+        <input type="submit"></input>
+    </form>
+}

@@ -5,6 +5,14 @@
 # Home page
 GET        /                             controllers.Application.index
 
+GET        /login1                       controllers.Messages1.login
+POST       /validate1                    controllers.Messages1.validateLogin
+POST       /createUser1                  controllers.Messages1.createUser
+GET        /messages1                    controllers.Messages1.messages
+GET        /logout1                      controllers.Messages1.logout
+POST       /sendPersonal1                controllers.Messages1.sendPersonal
+POST       /sendGeneral1                 controllers.Messages1.sendGeneral
+
 # Prefix must match `play.assets.urlPrefix`
 GET        /assets/*file                 controllers.Assets.at(file)
 GET        /versionedAssets/*file        controllers.Assets.versioned(path="/public", file: Asset)

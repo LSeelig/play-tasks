@@ -1,12 +1,9 @@
-@(message: String)
+@()(implicit flash: Flash) 
 
-@main("Play with Scala.js") {
+@main("Lee's Homepage") {
 
-  <h2>Play and Scala.js share a same message</h2>
+  <h2>Lee's Play Framework Website</h2>
   <ul>
-    <li>Play shouts out: <em>@message</em></li>
-    <li>Scala.js shouts out: <em id="scalajsShoutOut"></em></li>
+    <li><a href="@routes.Messages1.login">Message Board</a></li>
   </ul>
-
-  <div id="root"></div>
 }
