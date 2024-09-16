@@ -36,7 +36,7 @@ object  MessagesInMemoryModel {
     
     def sendPersonal(username: String, message: String, recipient: String): Boolean = {
         if (users.contains(recipient)) {
-            messages(recipient) = s"$username:  $message" :: messages.get(recipient).getOrElse(Nil)
+            messages(recipient) = s"$username: $message" :: messages.get(recipient).getOrElse(Nil)
             true
         } else false
     }
