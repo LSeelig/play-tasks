@@ -1,8 +1,8 @@
 @* login1 Template File *@
-@()(implicit request: RequestHeader, flash: Flash)
+@(loginForm: Form[LoginData])(implicit request: MessagesRequestHeader, flash: Flash)
 
 @main("Login") {
-    <h2>Login</h2>
+    <h2>Login</h2> 
 
     <form method="post" action="@routes.Messages1.validateLogin">
         @helper.CSRF.formField
@@ -12,6 +12,15 @@
         <br>
         <input type="submit"></input>
     </form>
+
+    @helper.form(action = routes.Messages1.validateLoginForm) {
+        @helper.CSRF.formField
+        @helper.inputText(loginForm("Username"))
+        @helper.inputText(loginForm("Password"))
+        <div class="form-actions">
+            <button type="submit">Login</button>
+        </div>
+    }
 
     <form method="post" action="@routes.Messages1.createUser">
         @helper.CSRF.formField

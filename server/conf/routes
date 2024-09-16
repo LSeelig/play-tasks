@@ -7,6 +7,7 @@ GET        /                             controllers.Application.index
 
 GET        /login1                       controllers.Messages1.login
 POST       /validate1                    controllers.Messages1.validateLogin
+POST       /validateForm1                controllers.Messages1.validateLoginForm
 POST       /createUser1                  controllers.Messages1.createUser
 GET        /messages1                    controllers.Messages1.messages
 GET        /logout1                      controllers.Messages1.logout
