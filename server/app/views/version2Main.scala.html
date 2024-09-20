@@ -1,0 +1,16 @@
+@* version2Main Template File *@
+@(startRoute: String)(implicit request: RequestHeader, flash: Flash)
+
+@main("Message Board  (Version 2)") {
+    <div id="contents"></div>
+
+    <input type="hidden" id="csrfToken" value="@helper.CSRF.getToken.value">
+    <input type="hidden" id="loginRoute" value="@startRoute">
+    <input type="hidden" id="validateRoute" value="@routes.Messages2.validate">
+    <input type="hidden" id="createRoute" value="@routes.Messages2.create">
+    <input type="hidden" id="personalRoute" value="@routes.Messages2.sendPersonal">
+    <input type="hidden" id="generalRoute" value="@routes.Messages2.sendGeneral">
+    <input type="hidden" id="logoutRoute" value="@routes.Messages2.logout">
+
+    <script src="@routes.Assets.versioned("javascript/version2.js")"></script>
+}

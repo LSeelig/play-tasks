@@ -1,0 +1,39 @@
+@* messages2 Template File *@
+@(username: String, messages: Seq[String], general: Seq[String])(implicit request: RequestHeader, flash: Flash)
+
+<h2>Message Board</h2>
+
+<div>Logged in as @username</div>
+<br>
+<h3>Private</h3>
+<ul>
+    @for((message, i) <- messages.zipWithIndex) {
+        <li>@message</li>
+    }
+</ul>
+
+<h3>Public</h3>
+<ul>
+    @for((message, i) <- general.zipWithIndex) {
+        <li>@message</li>
+    }
+</ul>
+
+<br>
+
+<h3>Send Messages</h3>
+
+<input type="text" id="recipient" placeholder="Recipient"></input>
+<input type="text" id="newPersonal" placeholder="Message"></input>
+<button onclick="sendPersonal()">Send</button>
+
+<br>
+    
+<input type="text" id="newGeneral" placeholder="Message"></input>
+<button onclick="sendGeneral()">Send to All</button>
+ 
+<br>
+
+<div>
+    <a href="@routes.Messages2.logout">Logout</a>
+</div>

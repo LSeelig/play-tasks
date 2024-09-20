@@ -5,6 +5,7 @@
 # Home page
 GET        /                             controllers.Application.index
 
+# Routes for version 1
 GET        /login1                       controllers.Messages1.login
 POST       /validate1                    controllers.Messages1.validateLogin
 POST       /createUser1                  controllers.Messages1.createUser
@@ -12,6 +13,16 @@ GET        /messages1                    controllers.Messages1.messages
 GET        /logout1                      controllers.Messages1.logout
 POST       /sendPersonal1                controllers.Messages1.sendPersonal
 POST       /sendGeneral1                 controllers.Messages1.sendGeneral
+
+# Routes for version 2
+GET        /load2                        controllers.Messages2.load
+GET        /login2                       controllers.Messages2.login
+GET        /messages2                    controllers.Messages2.messages
+POST       /validate2                    controllers.Messages2.validate
+POST       /create2                      controllers.Messages2.create
+POST       /sendPersonal2                controllers.Messages2.sendPersonal
+POST       /sendGeneral2                 controllers.Messages2.sendGeneral
+GET        /logout2                      controllers.Messages2.logout
 
 # Prefix must match `play.assets.urlPrefix`
 GET        /assets/*file                 controllers.Assets.at(file)
