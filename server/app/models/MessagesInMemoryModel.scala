@@ -31,12 +31,12 @@ object  MessagesInMemoryModel {
     def getGeneral(): Seq[String] = general
 
     def sendGeneral(username: String, message: String): Unit = {
-        general = s"$username: $message" :: general
+        general = general ::: List(s"$username: $message")
     }
     
     def sendPersonal(username: String, message: String, recipient: String): Boolean = {
         if (users.contains(recipient)) {
-            messages(recipient) = s"$username: $message" :: messages.get(recipient).getOrElse(Nil)
+            messages(recipient) = messages.get(recipient).getOrElse(Nil) ::: List(s"$username: $message")
             true
         } else false
     }

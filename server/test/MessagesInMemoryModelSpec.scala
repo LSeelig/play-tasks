@@ -44,26 +44,26 @@ class MessagesInMemoryModel extends PlaySpec {
 
         "send new general messages from default users" in {
             MessagesInMemoryModel.sendGeneral("mlewis", "New general message")
-            MessagesInMemoryModel.getGeneral() mustBe (List("mlewis: New general message", "web: Test message from web to all"))
+            MessagesInMemoryModel.getGeneral() mustBe (List("web: Test message from web to all", "mlewis: New general message"))
             MessagesInMemoryModel.sendGeneral("web", "New general message")
-            MessagesInMemoryModel.getGeneral() mustBe (List("web: New general message", "mlewis: New general message", "web: Test message from web to all"))
+            MessagesInMemoryModel.getGeneral() mustBe (List("web: Test message from web to all", "mlewis: New general message", "web: New general message"))
         }
         
         "send new general messages from new user" in {
             MessagesInMemoryModel.sendGeneral("lseelig", "New general message")
-            MessagesInMemoryModel.getGeneral() mustBe (List("lseelig: New general message", "web: New general message", "mlewis: New general message", "web: Test message from web to all"))
+            MessagesInMemoryModel.getGeneral() mustBe (List("web: Test message from web to all", "mlewis: New general message", "web: New general message", "lseelig: New general message"))
         }
         
         "send new personal messages between default users" in {
             MessagesInMemoryModel.sendPersonal("mlewis", "New personal message", "web") mustBe (true)
-            MessagesInMemoryModel.getPersonal("web") mustBe (List("mlewis: New personal message", "mlewis: Test message from mlewis to web"))
+            MessagesInMemoryModel.getPersonal("web") mustBe (List("mlewis: Test message from mlewis to web", "mlewis: New personal message"))
             MessagesInMemoryModel.sendPersonal("web", "New personal message", "mlewis") mustBe (true)
             MessagesInMemoryModel.getPersonal("mlewis") mustBe (List("web: New personal message"))
         }
 
         "send new personal messages from new user" in {
             MessagesInMemoryModel.sendPersonal("lseelig", "New personal message", "mlewis") mustBe (true)
-            MessagesInMemoryModel.getPersonal("mlewis") mustBe (List("lseelig: New personal message", "web: New personal message"))
+            MessagesInMemoryModel.getPersonal("mlewis") mustBe (List("web: New personal message", "lseelig: New personal message"))
         }
 
         "send new personal messages to new user" in {
